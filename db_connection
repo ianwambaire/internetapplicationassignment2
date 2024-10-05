@@ -1,9 +1,9 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "internetapplication";
+    private $db_name = "internet_application";
     private $username = "root";
-    private $password = "##oliviamumbi2010";
+    private $password = "oliviamumbi2010";
     public $conn;
     public function getConnection() {
         $this->conn = null;
