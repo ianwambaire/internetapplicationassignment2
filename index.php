@@ -1,6 +1,23 @@
 <?php
 include_once 'db_connection';
 include_once 'users.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $database = new Database();
+    $db = $database->getConnection();
+
+    $user = new User($db);
+
+    $user->firstname = htmlspecialchars(strip_tags($_POST['firstname']));
+    $user->lastname = htmlspecialchars(strip_tags($_POST['lastname']));
+    $user->email = htmlspecialchars(strip_tags($_POST['email']));
+    $user->password = htmlspecialchars(strip_tags($_POST['password']));
+
+    if($user->create()) {
+        echo "User was created.";
+    } else {
+        echo "Unable to create user.";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
