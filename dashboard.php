@@ -1,0 +1,3 @@
+<?php
+$stmt = $user->readAll();
+?>
