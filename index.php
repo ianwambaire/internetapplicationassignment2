@@ -3,6 +3,7 @@ include_once 'db_connection.php';
 include_once 'users.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $database = new Database(); // Create a new instance of the Database class
