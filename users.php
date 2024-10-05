@@ -9,9 +9,11 @@ class User {
     public $email;
     public $password;
     public $created_at;
+
     public function __construct($db) {
         $this->conn = $db;
     }
+
     public function create() {
         $query = "INSERT INTO " . $this->table_name . " (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)";
         $stmt = $this->conn->prepare($query);
@@ -34,3 +36,4 @@ class User {
         return $stmt;
     }
 }
+
