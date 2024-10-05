@@ -1,5 +1,6 @@
 <?php
 include_once 'db_connection';
+include_once 'users.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
