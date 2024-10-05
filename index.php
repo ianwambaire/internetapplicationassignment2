@@ -22,7 +22,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user->verification_token = bin2hex(random_bytes(16));
 
     if ($user->create()) {
-        echo "User was created.";
+        // Send verification email
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->isSMTP();                                            
+            $mail->Host       = 'smtp.example.com';                
+            $mail->SMTPAuth   = true;                               
+            $mail->Username   = 'iannganga154@gmail.com';       
+            $mail->Password   = '##oliviamumbi2010';             
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;   
+            $mail->Port       = 587;                                
+
+            //Recipients
+            $mail->setFrom('iannganga154@gmail.com', 'Mailer');
+            $mail->addAddress($user->email);                  
+
+            // Content
+            $mail->isHTML(true);          
+            $mail->Subject = 'Verify your email address';
+            $mail->Body    = "Click <a href='http://your_domain.com/verify.php?token={$user->verification_token}'>here</a> to verify your email address.";
+
+            $mail->send();
+            echo 'Verification email sent. Please check your inbox.';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
     } else {
         echo "Unable to create user.";
     }
