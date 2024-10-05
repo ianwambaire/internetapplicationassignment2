@@ -9,4 +9,7 @@ class User {
     public $email;
     public $password;
     public $created_at;
+    public function __construct($db) {
+        $this->conn = $db;
+    }
 }
