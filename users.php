@@ -12,4 +12,18 @@ class User {
     public function __construct($db) {
         $this->conn = $db;
     }
+    public function create() {
+        $query = "INSERT INTO " . $this->table_name . " (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':firstname', $this->firstname);
+        $stmt->bindParam(':lastname', $this->lastname);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':password', password_hash($this->password, PASSWORD_BCRYPT));
+
+        if($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
 }
