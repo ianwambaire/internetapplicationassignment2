@@ -5,4 +5,5 @@ class Database {
     private $username = "root";
     private $password = "##oliviamumbi2010";
     public $conn;
+    
 }
