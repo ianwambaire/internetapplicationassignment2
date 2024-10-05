@@ -35,6 +35,16 @@ class User {
         $stmt->execute();
         return $stmt;
     }
+    public function readByEmail() {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
+        $stmt = $this->conn->prepare($query);
+        
+        $stmt->bindParam(':email', $this->email);
+        
+        $stmt->execute();
+        return $stmt;
+    }
+    
     public function verifyEmail() {
         $query = "UPDATE " . $this->table_name . " SET is_verified = 1 WHERE verification_token = :verification_token";
         $stmt = $this->conn->prepare($query);
