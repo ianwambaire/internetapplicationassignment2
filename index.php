@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user->lastname = htmlspecialchars(strip_tags($_POST['lastname']));
     $user->email = htmlspecialchars(strip_tags($_POST['email']));
     $user->password = htmlspecialchars(strip_tags($_POST['password']));
+    $user->verification_token = bin2hex(random_bytes(16));
 
     if ($user->create()) {
         echo "User was created.";
