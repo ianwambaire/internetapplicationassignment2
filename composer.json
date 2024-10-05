@@ -1,0 +1,17 @@
+{
+    "name": "nganga/internetapplication",
+    "autoload": {
+        "psr-4": {
+            "Nganga\\Internetapplication\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ianwambaire",
+            "email": "ian.wambaire@strathmore.edu"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
