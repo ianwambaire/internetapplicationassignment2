@@ -1,4 +1,5 @@
 <?php
+include_once 'db_connection';
 ?>
 <!DOCTYPE html>
 <html lang="en">
